@@ -32,17 +32,17 @@ def nested_function_line_event():
         pass
 
     def g(x):
-        return x
+        x += 1
 
     def printer_global(frame, event, arg):
         print("frame.lineno is: ", frame.f_lineno)
         print("\nthis is global")
-        print(frame, event, arg)
+        print(frame, event, frame.f_locals)
         return printer_local
 
     def printer_local(frame, event, arg):
         print("frame.lineno is: ", frame.f_lineno)
-        print(frame, event, arg)
+        print(frame, event, frame.f_locals)
 
     sys.settrace(printer_global)
     sys._getframe().f_trace = printer_local
@@ -160,7 +160,7 @@ def lnotab_and_comments():
 
 
 def main():
-    lnotab_and_comments()
+    nested_function_line_event()
 
 
 if __name__ == "__main__":

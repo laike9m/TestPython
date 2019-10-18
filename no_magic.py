@@ -122,12 +122,11 @@ class TheMonitor:
 
 @TheMonitor
 def f(*args, **kwargs):
-    pass
+    x = [1 for i in range(3)]
 
 
-def test(g):
-    y = 1
+def test():
     f(1, 2)
 
 
-test(1)
+test()
