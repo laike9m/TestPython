@@ -12,6 +12,7 @@ class A:
     def do(self):
         executing_obj = executing.Source.executing(sys._getframe())
         node = list(executing_obj.statements)[0]
+        print(node)
         while hasattr(node, "parent") and node.parent:
             print(node.parent)
             node = node.parent
