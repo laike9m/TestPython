@@ -1,16 +1,12 @@
 from cyberbrain import Tracer
 
-print("sss")
-# tracer = Tracer()
-# tracer.init()
+tracer = Tracer()
+tracer.init()
 
 a = 1
 b = a
 
-def f():
-    x = 1
-    print(x)
+tracer.register()
 
-
-# tracer.register()
+c = 1
 # print(tracer.events)
