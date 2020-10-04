@@ -1,10 +1,10 @@
 from cheap_repr import cheap_repr
 
-def foo():
+def this_is_my_function():
     def bar():
         pass
 
     print(cheap_repr(bar))
 
 
-foo()
+this_is_my_function()
