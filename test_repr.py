@@ -1,10 +1,15 @@
 from cheap_repr import cheap_repr
 
 def this_is_my_function():
-    def bar():
+    class A:
         pass
 
-    print(cheap_repr(bar))
+    a = A()
+
+    print(cheap_repr(a))
+    from utils import return_GetFrame
+
+    frame = return_GetFrame(rpc)
 
 
 this_is_my_function()
