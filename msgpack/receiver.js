@@ -1,30 +1,19 @@
 import pkg from "@msgpack/msgpack";
-import dgram from "dgram";
+import express from "express";
+import bodyParser from "body-parser";
 
 const { decode } = pkg;
 
 let cl = console.log;
 
-const PORT = 3000;
+const app = express();
+app.use(bodyParser.raw());
 
-const server = dgram.createSocket("udp4");
-
-server.on("error", err => {
-  console.log(`server error:\n${err.stack}`);
-  server.close();
-});
-
-server.on("message", (msg, rinfo) => {
-  console.log(`server got: msg from ${rinfo.address}:${rinfo.port}`);
-  const object = decode(msg.buffer);
+app.post("/", function(req, res) {
+  const object = decode(req.body);
   console.log(object);
   console.log(`baz.foo is ${object.baz.foo}`);
+  res.send("POST request to homepage");
 });
 
-server.on("listening", () => {
-  const address = server.address();
-  console.log(`server listening ${address.address}:${address.port}`);
-});
-
-server.bind(PORT);
-// Prints: server listening 0.0.0.0:41234
+app.listen(3000, () => console.log("Example app listening on port 3000!"));

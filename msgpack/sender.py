@@ -1,4 +1,4 @@
-import socket
+import requests
 
 import msgpack
 
@@ -11,7 +11,9 @@ data = {
     "baz": {"foo": "bar", "key": "value", "the answer": 42},
 }
 
-with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
-    s.connect((HOST, PORT))
-    s.sendall(msgpack.packb(data))
-    s.close()
+
+requests.post(
+    f"http://{HOST}:{PORT}",
+    data=msgpack.packb(data),
+    headers={"Content-Type": "application/octet-stream"},
+)
