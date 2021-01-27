@@ -1,0 +1,8 @@
+{
+  "name": "msgpack",
+  "version": "1.0.0",
+  "dependencies": {
+    "@msgpack/msgpack": "^2.3.0"
+  },
+  "type": "module"
+}

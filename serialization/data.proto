@@ -1,0 +1,7 @@
+syntax = "proto2";
+
+message Data {
+  optional string id = 1;
+  optional int32 lineno = 3;
+  optional int64 index = 6;
+}
