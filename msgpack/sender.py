@@ -3,7 +3,7 @@ import requests
 import msgpack
 
 HOST = "127.0.0.1"  # The server's hostname or IP address
-PORT = 3000  # The port used by the server
+PORT = 1989  # The port used by the server
 
 data = {
     "foo": [1, 42, 3.141, 1337, "help"],
@@ -13,7 +13,7 @@ data = {
 
 
 requests.post(
-    f"http://{HOST}:{PORT}",
+    f"http://{HOST}:{PORT}/frame",
     data=msgpack.packb(data),
     headers={"Content-Type": "application/octet-stream"},
 )
